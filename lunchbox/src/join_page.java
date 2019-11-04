@@ -91,6 +91,7 @@ public class join_page extends JFrame implements ActionListener{
 		add(joinPan);
 	}
 	
+	//mouse click event...
 	public class MouseEventDemo implements MouseListener, MouseMotionListener{
 
 		@Override

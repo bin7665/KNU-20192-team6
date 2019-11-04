@@ -22,7 +22,7 @@ public class my_page extends JFrame implements ActionListener{
 		ImageIcon MyIcon = new ImageIcon("src/kakao.jpg");
 		//image size change
 		Image img = MyIcon.getImage();
-		Image newimg = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+		Image newimg = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
 		MyIcon = new ImageIcon(newimg);
 		myLabel.setIcon(MyIcon);
 		myLabel.setBorder(BorderFactory.createEmptyBorder(50,50,10,50));
@@ -39,16 +39,19 @@ public class my_page extends JFrame implements ActionListener{
 		JPanel buttonPan = new JPanel();
 		
 		JButton ch_info = new JButton("정보변경");
+		ch_info.addActionListener(this);
 		ch_info.setFont(new Font("", Font.PLAIN, 50));
 		ch_info.setPreferredSize(new Dimension(button_width,button_height));
 		buttonPan.add(ch_info);
 		
 		JButton Ord_dir = new JButton("주문내역");
+		Ord_dir.addActionListener(this);
 		Ord_dir.setFont(new Font("", Font.PLAIN, 50));
 		Ord_dir.setPreferredSize(new Dimension(button_width,button_height));
 		buttonPan.add(Ord_dir);
 		
 		JButton Inq = new JButton("문의하기");
+		Inq.addActionListener(this);
 		Inq.setFont(new Font("", Font.PLAIN, 50));
 		Inq.setPreferredSize(new Dimension(button_width,button_height));
 		buttonPan.add(Inq);
@@ -64,16 +67,19 @@ public class my_page extends JFrame implements ActionListener{
 
 		//change information
 		if (actionCommand.equals("정보변경")) {
-			//
+			ch_inf newpage1 = new ch_inf();
+			newpage1.setVisible(true);
 		} 
 		//order detail
 		else if (actionCommand.equals("주문내역")) {
-			//
+			Order_dir newpage2 = new Order_dir();
+			newpage2.setVisible(true);
 		}
 
 		//Inquiry
 		else if (actionCommand.equals("문의하기")) {
-			//
+			inquiry newpage3 = new inquiry();
+			newpage3.setVisible(true);
 		} else {
 			System.err.println("Error");
 		}
