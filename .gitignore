@@ -18,9 +18,12 @@ local.properties
 .settings/
 
 .loadpath
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 .recommenders
 =======
 .recommenders
 >>>>>>> d05f1c9ba186fda063fffc93e02f4e2564f709c1
+=======
+>>>>>>> aba287cddc9afd9ecbe911d1c9400bb4defe01f8
