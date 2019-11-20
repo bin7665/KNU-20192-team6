@@ -16,6 +16,7 @@ public class inquiry extends JFrame implements ActionListener{
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(log_in.WINDOW_WIDTH, log_in.WINDOW_HEIGHT);
+		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
 		
 		JPanel titlePan = new JPanel(new FlowLayout(FlowLayout.CENTER));

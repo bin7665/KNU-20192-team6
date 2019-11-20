@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
 public class log_in extends JFrame implements ActionListener{
 	public static final int WINDOW_WIDTH = 768;//98*8
@@ -14,6 +15,7 @@ public class log_in extends JFrame implements ActionListener{
 		super();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		setLocationRelativeTo(null);
 		
 		setBackground(Color.lightGray);
 		setLayout(new BorderLayout());
@@ -68,11 +70,80 @@ public class log_in extends JFrame implements ActionListener{
 	//button action
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
+		String userid = ID.getText();
+		String userpw = PW.getText();
+		
+		class confirmWindow extends JFrame implements ActionListener{
+			JLabel confirmLabel;
+			JPanel buttonPanel;
+			public confirmWindow() {
+				setSize(200, 100);
+				getContentPane().setBackground(Color.YELLOW);
+				setLayout(new BorderLayout());
+				setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				setLocation(49*6, 64*7);
+				confirmLabel = new JLabel("   ");
+				add(confirmLabel, BorderLayout.CENTER);
+				
+				buttonPanel = new JPanel();
+				buttonPanel.setBackground(Color.YELLOW);
+				buttonPanel.setLayout(new FlowLayout());
+				
+				JButton exitButton = new JButton("확인");
+				exitButton.addActionListener(this);
+				buttonPanel.add(exitButton);
+				
+				add(buttonPanel, BorderLayout.SOUTH);
+			}
+			
+			public void setmessage(String msg) {
+				confirmLabel.setText("   "+msg);
+			}
+			
+			public void actionPerformed(ActionEvent e) {
+				String actionCommand = e.getActionCommand();
+				if(actionCommand.contentEquals("확인")) {
+					dispose();
+				}
+				else
+					System.out.println("error!");
+			}
+		}//End of inner class ConfirmWindow
+		
 		if(actionCommand.equals("login")) {
-			//go to the my page
-			my_page new_page = new my_page();
-			new_page.setVisible(true);
-			this.setVisible(false);
+			if(true) {
+				//check the ID
+				File id_f = new File("user_" +userid);
+				if(id_f.isFile()) {
+					//check pw
+					try{
+						ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_" + userid));
+						User readone = (User)inputStream.readObject();
+						if(PW.getText().equals(readone.getpw())) {
+							//go to the my page
+							my_page new_page = new my_page(ID.getText());
+							new_page.setVisible(true);
+							this.setVisible(false);
+						}
+						else {//invalid pw
+							confirmWindow confirm = new confirmWindow();
+							confirm.setmessage("pw가 일치하지않습니다.");
+							confirm.setVisible(true);
+						}
+					}catch(FileNotFoundException e1) {
+						System.out.println("Cannot find datafile.");
+					}catch(ClassNotFoundException e1) {
+						System.out.println("Problems with file input");
+					}catch(IOException e1) {
+						System.out.println("Problems with file input.");
+					}
+				}
+				else {//invalid id
+					confirmWindow confirm = new confirmWindow();
+					confirm.setmessage("존재하지 않는 ID입니다.");
+					confirm.setVisible(true);
+				}
+			}
 		}
 		else if(actionCommand.contentEquals("join")) {
 			//go to the join membership page
@@ -84,9 +155,10 @@ public class log_in extends JFrame implements ActionListener{
 		}
 	}
 	
-	public static void main(String[] args) {
-		log_in page1 = new log_in();
-		page1.setVisible(true);
-	}
+//for the test main function	
+//	public static void main(String[] args) {
+//		log_in page1 = new log_in();
+//		page1.setVisible(true);
+//	}
 
 }

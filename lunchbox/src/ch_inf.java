@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class ch_inf extends JFrame implements ActionListener{
 	private JTextField pw;
@@ -11,68 +15,74 @@ public class ch_inf extends JFrame implements ActionListener{
 	
 	private int Text_Field_width=440;
 	private int Text_Field_height=50;
-	
-	private int LEFT_PADDING = 100;
-	private int RIGHT_PADDING = 100;
+	private int x = 30;
+	private int y = 60;
 	
 	public ch_inf() {
 		super();
+	}
+	
+	public ch_inf(String userid) {
+		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(log_in.WINDOW_WIDTH, log_in.WINDOW_HEIGHT);
-		setLayout(new BorderLayout());
+		setSize(log_in.WINDOW_WIDTH/4*3, log_in.WINDOW_HEIGHT/4*3);
+		setLocationRelativeTo(null);
+		setLayout(null);
 		
 		JPanel junkPan = new JPanel();
-		add(junkPan, BorderLayout.NORTH);//upper padding...
+		junkPan.setBounds(150+x,y,Text_Field_width,Text_Field_height);
+		add(junkPan);
+
+		try {
+			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_"+ userid));
+			User readone = (User)inputStream.readObject();
+			pw = new JTextField("비밀번호");
+			pw.setEditable(false);
+			pw.setHorizontalAlignment(JTextField.CENTER);
+			pw.addMouseListener(new MouseEventDemo());
+			pw.setBounds(y,80+2*x+Text_Field_height,Text_Field_width,Text_Field_height);
+			add(pw);
+			
+			JPanel c_pwPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			confirm_pw = new JTextField("비밀번호 확인");
+			confirm_pw.setHorizontalAlignment(JTextField.CENTER);
+			confirm_pw.setEditable(false);
+			confirm_pw.addMouseListener(new MouseEventDemo());
+			confirm_pw.setBounds(y,80+3*x+2*Text_Field_height,Text_Field_width,Text_Field_height);
+			add(confirm_pw);
+			
+			JPanel phonePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			phone_num = new JTextField(readone.getphone_num());
+			phone_num.setHorizontalAlignment(JTextField.CENTER);
+			phone_num.setEditable(false);
+			phone_num.addMouseListener(new MouseEventDemo());
+			phone_num.setBounds(y,80+4*x+3*Text_Field_height,Text_Field_width,Text_Field_height);
+			add(phone_num);
+			
+			JPanel addPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			address = new JTextField(readone.getaddress());
+			address.setEditable(false);
+			address.setHorizontalAlignment(JTextField.CENTER);
+			address.addMouseListener(new MouseEventDemo());
+			address.setBounds(y,80+5*x+4*Text_Field_height,Text_Field_width,3*Text_Field_height);
+			add(address);
+		}catch(FileNotFoundException e1) {
+			System.out.println("Cannot find datafile.");
+		}catch(ClassNotFoundException e1) {
+			System.out.println("Problems with file input");
+		}catch(IOException e1) {
+			System.out.println("Problems with file input.");
+		}
 		
-		JPanel textPan = new JPanel(new GridLayout(4,1));
-		JPanel pwPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		pw = new JTextField("비밀번호");
-		pw.setHorizontalAlignment(JTextField.CENTER);
-		pw.setPreferredSize(new Dimension(Text_Field_width,Text_Field_height));
-		pw.addMouseListener(new MouseEventDemo());
-		pwPan.add(pw);
-		pwPan.setBorder(BorderFactory.createEmptyBorder(80,LEFT_PADDING,10,RIGHT_PADDING));
-		textPan.add(pwPan);
-		
-		JPanel c_pwPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		confirm_pw = new JTextField("비밀번호 확인");
-		confirm_pw.setHorizontalAlignment(JTextField.CENTER);
-		confirm_pw.setPreferredSize(new Dimension(Text_Field_width,Text_Field_height));
-		confirm_pw.addMouseListener(new MouseEventDemo());
-		c_pwPan.add(confirm_pw);
-		c_pwPan.setBorder(BorderFactory.createEmptyBorder(30,LEFT_PADDING,10,RIGHT_PADDING));
-		textPan.add(c_pwPan);
-		
-		JPanel phonePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		phone_num = new JTextField("핸드폰 번호");
-		phone_num.setHorizontalAlignment(JTextField.CENTER);
-		phone_num.setPreferredSize(new Dimension(Text_Field_width,Text_Field_height));
-		phone_num.addMouseListener(new MouseEventDemo());
-		phonePan.add(phone_num);
-		phonePan.setBorder(BorderFactory.createEmptyBorder(30,LEFT_PADDING,10,RIGHT_PADDING));
-		textPan.add(phonePan);
-		
-		JPanel addPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		address = new JTextField("주소");
-		address.setHorizontalAlignment(JTextField.CENTER);
-		address.setPreferredSize(new Dimension(Text_Field_width,Text_Field_height*2));
-		address.addMouseListener(new MouseEventDemo());
-		addPan.add(address);
-		addPan.setBorder(BorderFactory.createEmptyBorder(0,LEFT_PADDING,50,RIGHT_PADDING));
-		textPan.add(addPan);
-		add(textPan, BorderLayout.CENTER);
-		
-		JPanel buttonPan = new JPanel(new FlowLayout());
 		JButton change_confirm = new JButton("변경");
 		change_confirm.addActionListener(this);
 		change_confirm.setPreferredSize(new Dimension(Text_Field_width,Text_Field_height));
-		buttonPan.add(change_confirm);
-		buttonPan.setBorder(BorderFactory.createEmptyBorder(0,LEFT_PADDING,0,RIGHT_PADDING));
-		add(buttonPan, BorderLayout.SOUTH);
+		change_confirm.setBounds(log_in.WINDOW_WIDTH/8*3-50, log_in.WINDOW_HEIGHT/4*3-100, 100, 50);
+		add(change_confirm);
 	}
 	
 	//mouse click event...
-		public class MouseEventDemo implements MouseListener, MouseMotionListener{
+	public class MouseEventDemo implements MouseListener, MouseMotionListener{
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
@@ -92,6 +102,7 @@ public class ch_inf extends JFrame implements ActionListener{
 				Object o = e.getSource();
 				JTextField To = (JTextField)o;
 				To.setText("");
+				To.setEditable(true);
 			}
 
 			@Override
