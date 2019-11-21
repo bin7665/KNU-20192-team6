@@ -21,18 +21,17 @@ public class ordersizePage extends JFrame implements ActionListener {
 
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
-	public static String ID = "name";
 	private JPanel sizePanel;
-	private JPanel menuPanel;
 	public static void main(String[] args)
 	{
 		
 	}
 	
-	public ordersizePage(String ID)
+	public ordersizePage()
 	{
 		super("도시락 크기 선정");
 		setSize(WIDTH, HEIGHT);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());
 		sizePanel = new JPanel();
 		sizePanel.setLayout(null);
@@ -52,7 +51,7 @@ public class ordersizePage extends JFrame implements ActionListener {
 		specialmenu.setBounds(285, 500, 400, 90);
 		specialmenu.addActionListener(this);
 		sizePanel.add(specialmenu);
-		menu gui = new menu(sizePanel);
+		menu gui = new menu(sizePanel, 1, 0);
 		gui.setVisible(true);
 		add(sizePanel, BorderLayout.CENTER);
 	}
@@ -62,22 +61,22 @@ public class ordersizePage extends JFrame implements ActionListener {
 		String buttonString = e.getActionCommand();
 		if(buttonString.equals("(밥, 국, 반찬 2개) or (밥, 반찬 3개)"))
 		{
-			fourSize gui = new fourSize(ID);
+			fourSize gui = new fourSize();
 			gui.setVisible(true);
 		}
 		else if(buttonString.equals("(밥, 국, 반찬 3개) or (밥, 반찬 4개)"))
 		{
-			fiveSize gui = new fiveSize(ID);
+			fiveSize gui = new fiveSize();
 			gui.setVisible(true);
 		}
 		else if(buttonString.equals("(밥, 국, 반찬 4개) or (밥, 반찬 5개)"))
 		{
-			sixSize gui = new sixSize(ID);
+			sixSize gui = new sixSize();
 			gui.setVisible(true);
 		}
 		else if(buttonString.equals("계절 음식"))
 		{
-			seasonMenu gui = new seasonMenu(ID);
+			seasonMenu gui = new seasonMenu();
 			gui.setVisible(true);
 		}
 		

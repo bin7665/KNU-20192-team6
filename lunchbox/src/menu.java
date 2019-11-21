@@ -1,3 +1,5 @@
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,20 +17,64 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class menu extends JFrame implements ActionListener {
-	private String ID = "name";
+
+	private int pagenum;
+	private int kindnum;
 	public void actionPerformed(ActionEvent e) {
 		String buttonString = e.getActionCommand();
-		if(buttonString.equals("Back"))
+		if(buttonString.equals("Back"))//뒤로가기
 		{
-			//이전페이지
+			if(pagenum == 0)
+			{
+				//메인메뉴 뒤로가기
+			}
+			else if(pagenum == 1)
+			{
+				mainPage gui = new mainPage();
+				gui.setVisible(true);	
+				pagenum--;
+			}
+			else if(pagenum == 2)
+			{
+				ordersizePage gui = new ordersizePage();
+				gui.setVisible(true);
+				pagenum--;
+			}
+			else if(pagenum == 3)
+			{
+				if(kindnum == 4)
+				{
+					fourSize gui = new fourSize();
+					gui.setVisible(true);
+					pagenum--;
+				}
+				else if(kindnum == 5)
+				{
+					fiveSize gui = new fiveSize();
+					gui.setVisible(true);
+					pagenum--;
+				}
+				else if(kindnum == 6)
+				{
+					sixSize gui = new sixSize();
+					gui.setVisible(true);
+					pagenum--;
+				}
+				else if(kindnum == 7)
+				{
+					seasonMenu gui = new seasonMenu();
+					gui.setVisible(true);
+					pagenum--;
+				}
+			}
 		}
 		else if(buttonString.equals("Basket"))
 		{
 			//장바구니 페이지
 		}
-		else if(buttonString.equals("Purchase"))
+		else if(buttonString.equals("Purchase"))// 주문페이지
 		{
-			ordersizePage gui = new ordersizePage(ID);
+			ordersizePage gui = new ordersizePage();
 			gui.setVisible(true);
 		}
 		else if(buttonString.equals("Information"))
@@ -36,8 +82,10 @@ public class menu extends JFrame implements ActionListener {
 			//정보 페이지
 		}
 	}
-	public menu(JPanel panel)
+	public menu(JPanel panel, int page, int kind)
 	{
+		pagenum = page;
+		kindnum = kind;
 		JButton backButton = new JButton("Back");
         //ImageIcon backIcon = new ImageIcon("basketbutton.png");
         backButton.setBounds(0, 636, 256, 128);

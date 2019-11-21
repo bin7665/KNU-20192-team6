@@ -1,4 +1,3 @@
-//하단 배너 아이콘
 
 
 import javax.swing.JFrame;
@@ -21,19 +20,19 @@ public class mainPage extends JFrame implements ActionListener {
 	
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
+	public static int pagenum = 0;
 	private JPanel menuPanel;
-	public static String ID = "name";
 	
-//	public static void main(String[] args)
-//	{
-//		mainPage gui = new mainPage(ID);
-//		gui.setVisible(true);
-//	}
-	public mainPage(String ID)
+	public static void main(String[] args)
+	{
+		mainPage gui = new mainPage();
+		gui.setVisible(true);
+	}
+	public mainPage()
 	{
 		super("도시락 서비스");
 		setSize(WIDTH, HEIGHT);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout( ));
         menuPanel = new JPanel();
         menuPanel.setLayout(null);
@@ -43,7 +42,7 @@ public class mainPage extends JFrame implements ActionListener {
         JLabel pictureLabel = new JLabel("picture");
         pictureLabel.setBounds(256, 64, 128, 64);
         infoPanel.add(pictureLabel);
-        JLabel idLabel = new JLabel("ID : " + ID +"");
+        JLabel idLabel = new JLabel("ID : name");
         idLabel.setBounds(512, 64, 128, 64);
         idLabel.setBackground(Color.white);
         infoPanel.add(idLabel);
@@ -60,13 +59,11 @@ public class mainPage extends JFrame implements ActionListener {
 		inQuire.setBounds(300, 480, 400, 90);
 		inQuire.addActionListener(this);
 		menuPanel.add(inQuire);
-		menu gui = new menu(menuPanel);
-		
+		menu gui = new menu(menuPanel, 0, 0);
         add(menuPanel, BorderLayout.CENTER);
 	}
         
 	public void actionPerformed(ActionEvent e) {
-		
-	}
+	}	
 }
 

@@ -24,16 +24,27 @@ public class order extends JFrame implements ActionListener {
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	private JPanel orderPanel;
+	private int Kind;
 	public void actionPerformed(ActionEvent e) {
 		
 		String buttonString = e.getActionCommand();
-		
+		if(buttonString == "주문하기")
+		{
+			orderComplete gui = new orderComplete(Kind);
+			gui.setVisible(true);
+		}
+		else if(buttonString == "장바구니에 담기")
+		{
+			orderComplete_basket gui = new orderComplete_basket(Kind);
+			gui.setVisible(true);
+		}
 	}
-	
-	public order(String ID, int kind)
+	public order(int kind)
 	{
 		super("주문하기");
+		Kind = kind;
 		setSize(WIDTH, HEIGHT);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());
 		orderPanel = new JPanel();
 		orderPanel.setLayout(null);
@@ -56,23 +67,14 @@ public class order extends JFrame implements ActionListener {
 		inquireString.setBounds(310, 330, 400, 150);
 		orderPanel.add(inquireString);
 		JButton order = new JButton("주문하기");
-		order.setBounds(310, 500, 400, 90);
+		order.setBounds(300, 500, 200, 90);
 		order.addActionListener(this);
-		
-		JButton backButton = new JButton("Back");
-        //ImageIcon backIcon = new ImageIcon("basketbutton.png");
-        backButton.setBounds(0, 636, 256, 128);
-        /*backButton.setIcon(backIcon);
-        backButton.setBackground(Color.white);
-        backButton.setBorderPainted(false);
-        backButton.setFocusPainted(false);
-        backButton.setContentAreaFilled(false); */
-        backButton.addActionListener(this);
-        orderPanel.add(backButton);
-        menu gui = new menu(orderPanel);
-		gui.setVisible(true);
 		orderPanel.add(order);
+		JButton order_basket = new JButton("장바구니에 담기");
+		order_basket.setBounds(520, 500, 200, 90);
+		order_basket.addActionListener(this);
+		orderPanel.add(order_basket);
+        menu gui = new menu(orderPanel, 3, kind);
 		add(orderPanel, BorderLayout.CENTER);
 	}
-	
 }

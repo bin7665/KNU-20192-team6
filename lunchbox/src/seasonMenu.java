@@ -19,40 +19,62 @@ import java.awt.event.ActionEvent;
 public class seasonMenu extends JFrame implements ActionListener{
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
-	public static String ID = "name";
 	private JPanel sizePanel;
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		String buttonString = e.getActionCommand();
+		if(buttonString.equals("Spring"))
+		{
+			
+		}
+		else if(buttonString.equals("Summer"))
+		{
+			
+		}
+		else if(buttonString.equals("Autumn"))
+		{
+			
+		}
+		else if(buttonString.equals("Winter"))
+		{
+		
+		}
+		else if(buttonString.equals("주문하기"))
+		{
+			order gui = new order(7);
+			gui.setVisible(true);
+		}
 		
 	}
-	public seasonMenu(String ID)
+	public seasonMenu()
 	{
 		super("도시락 크기 선정");
 		setSize(WIDTH, HEIGHT);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());
 		sizePanel = new JPanel();
 		sizePanel.setLayout(null);
 		JButton foursize = new JButton("Spring");
-		foursize.setBounds(285, 40, 400, 90);
+		foursize.setBounds(285, 40, 400, 80);
 		foursize.addActionListener(this);
 		sizePanel.add(foursize);
 		JButton fivesize = new JButton("Summer");
-		fivesize.setBounds(285, 170, 400, 90);
+		fivesize.setBounds(285, 150, 400, 90);
 		fivesize.addActionListener(this);
 		sizePanel.add(fivesize);
 		JButton sixsize = new JButton("Autumn");
-		sixsize.setBounds(285, 300, 400, 90);
+		sixsize.setBounds(285, 260, 400, 80);
 		sixsize.addActionListener(this);
 		sizePanel.add(sixsize);
 		JButton specialmenu = new JButton("Winter");
-		specialmenu.setBounds(285, 430, 400, 90);
+		specialmenu.setBounds(285, 370, 400, 80);
 		specialmenu.addActionListener(this);
 		sizePanel.add(specialmenu);
 		JButton order = new JButton("주문하기");
-		order.setBounds(285, 580, 400, 90);
+		order.setBounds(285, 500, 400, 90);
 		order.addActionListener(this);
 		sizePanel.add(order);
+		menu gui = new menu(sizePanel, 2 ,0);
 		add(sizePanel, BorderLayout.CENTER);
 	}
 }
