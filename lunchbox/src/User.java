@@ -5,6 +5,7 @@ public class User implements Serializable{
 	private String pw;
 	private String phone_num;
 	private String address;
+	//private lunchbox mybox; 
 	
 	public User() {
 		name = "";

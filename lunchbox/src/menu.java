@@ -1,5 +1,3 @@
-package mainPage;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class menu extends JFrame implements ActionListener {
-
 	private String ID = "name";
 	public void actionPerformed(ActionEvent e) {
 		String buttonString = e.getActionCommand();

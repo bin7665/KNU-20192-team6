@@ -79,6 +79,7 @@ public class log_in extends JFrame implements ActionListener{
 			public confirmWindow() {
 				setSize(200, 100);
 				getContentPane().setBackground(Color.YELLOW);
+				setLocationRelativeTo(null);
 				setLayout(new BorderLayout());
 				setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				setLocation(49*6, 64*7);
@@ -156,9 +157,9 @@ public class log_in extends JFrame implements ActionListener{
 	}
 	
 //for the test main function	
-//	public static void main(String[] args) {
-//		log_in page1 = new log_in();
-//		page1.setVisible(true);
-//	}
+	public static void main(String[] args) {
+		log_in page1 = new log_in();
+		page1.setVisible(true);
+	}
 
 }

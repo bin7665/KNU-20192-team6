@@ -1,5 +1,5 @@
 //하단 배너 아이콘
-package mainPage;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,11 +24,11 @@ public class mainPage extends JFrame implements ActionListener {
 	private JPanel menuPanel;
 	public static String ID = "name";
 	
-	public static void main(String[] args)
-	{
-		mainPage gui = new mainPage(ID);
-		gui.setVisible(true);
-	}
+//	public static void main(String[] args)
+//	{
+//		mainPage gui = new mainPage(ID);
+//		gui.setVisible(true);
+//	}
 	public mainPage(String ID)
 	{
 		super("도시락 서비스");
@@ -61,6 +61,7 @@ public class mainPage extends JFrame implements ActionListener {
 		inQuire.addActionListener(this);
 		menuPanel.add(inQuire);
 		menu gui = new menu(menuPanel);
+		
         add(menuPanel, BorderLayout.CENTER);
 	}
         
