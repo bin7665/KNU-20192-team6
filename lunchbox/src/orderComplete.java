@@ -1,4 +1,4 @@
-
+package project;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,3 +53,4 @@ public class orderComplete extends JFrame implements ActionListener {
 	}
 
 }
+

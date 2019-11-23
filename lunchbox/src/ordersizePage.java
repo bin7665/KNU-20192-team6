@@ -1,4 +1,4 @@
-
+package project;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,12 +22,8 @@ public class ordersizePage extends JFrame implements ActionListener {
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	private JPanel sizePanel;
-	public static void main(String[] args)
-	{
-		
-	}
-	
-	public ordersizePage()
+
+	public ordersizePage(String name)
 	{
 		super("도시락 크기 선정");
 		setSize(WIDTH, HEIGHT);
@@ -55,8 +51,7 @@ public class ordersizePage extends JFrame implements ActionListener {
 		gui.setVisible(true);
 		add(sizePanel, BorderLayout.CENTER);
 	}
-	
-	
+
 	public void actionPerformed(ActionEvent e) {
 		String buttonString = e.getActionCommand();
 		if(buttonString.equals("(밥, 국, 반찬 2개) or (밥, 반찬 3개)"))
@@ -83,3 +78,4 @@ public class ordersizePage extends JFrame implements ActionListener {
 	}
 
 }
+

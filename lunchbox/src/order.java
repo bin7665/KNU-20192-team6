@@ -1,3 +1,5 @@
+package project;
+
 
 
 import javax.swing.JFrame;
@@ -78,3 +80,4 @@ public class order extends JFrame implements ActionListener {
 		add(orderPanel, BorderLayout.CENTER);
 	}
 }
+

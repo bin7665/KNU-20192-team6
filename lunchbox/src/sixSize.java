@@ -1,4 +1,4 @@
-
+package project;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,43 +20,61 @@ public class sixSize extends JFrame implements ActionListener {
 
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
-	
+	private String name;
+	private String side1;
+	private String side2;
+	private String side3;
+	private String side4;
+	private String side5;
+	private String riceString;
 	private JPanel sizePanel;
+	private JButton sideDish1;
+	private JButton sideDish2;
+	private JButton sideDish3;
+	private JButton sideDish4;
+	private JButton sideDish5;
+	private JButton rice;
 	
 	public void actionPerformed(ActionEvent e) {
 		String buttonString = e.getActionCommand();
 		if(buttonString.equals("반찬."))
 		{
-			
+			orderList dish = new orderList(6,1);
+			dish.setVisible(true);
 		}
 		else if(buttonString.equals("반찬.."))
 		{
-			
+			orderList dish = new orderList(6,2);
+			dish.setVisible(true);
 		}
 		else if(buttonString.equals("반찬..."))
 		{
-			
+			orderList dish = new orderList(6,3);
+			dish.setVisible(true);
 		}
 		else if(buttonString.equals("반찬...."))
 		{
-			
+			orderList dish = new orderList(6,4);
+			dish.setVisible(true);
 		}
 		else if(buttonString.equals("반찬 or 국"))
 		{
-		
+			orderList dish = new orderList(6,5);
+			dish.setVisible(true);
 		}
 		else if(buttonString.equals("밥"))
 		{
-		
+			orderList dish = new orderList(6,6);
+			dish.setVisible(true);
 		}
 		else if(buttonString.equals("주문하기"))
 		{
-			order gui = new order(6);
+			order gui = new order(name, 6);
 			gui.setVisible(true);
 		}
 	}
 	
-	public sixSize()
+	public sixSize(String name)
 	{
 		super("메뉴 정하기");
 		setSize(WIDTH, HEIGHT);
@@ -64,27 +82,27 @@ public class sixSize extends JFrame implements ActionListener {
 		setLayout(new BorderLayout());
 		sizePanel = new JPanel();
 		sizePanel.setLayout(null);
-		JButton sideDish1 = new JButton("반찬.");
+		sideDish1 = new JButton("반찬.");
 		sideDish1.setBounds(200, 50, 143, 200);
 		sideDish1.addActionListener(this);
 		sizePanel.add(sideDish1);
-		JButton sideDish2 = new JButton("반찬..");
+		sideDish2 = new JButton("반찬..");
 		sideDish2.setBounds(342, 50, 143, 200);
 		sideDish2.addActionListener(this);
 		sizePanel.add(sideDish2);
-		JButton sideDish3 = new JButton("반찬...");
+		sideDish3 = new JButton("반찬...");
 		sideDish3.setBounds(484, 50, 143, 200);
 		sideDish3.addActionListener(this);
 		sizePanel.add(sideDish3);
-		JButton sideDish4 = new JButton("반찬....");
+		sideDish4 = new JButton("반찬....");
 		sideDish4.setBounds(626, 50, 143, 200);
 		sideDish4.addActionListener(this);
 		sizePanel.add(sideDish4);
-		JButton rice = new JButton("밥");
+		rice = new JButton("밥");
 		rice.setBounds(200, 250, 325, 200);
 		rice.addActionListener(this);
 		sizePanel.add(rice);
-		JButton sideDish5 = new JButton("반찬 or 국");
+		sideDish5 = new JButton("반찬 or 국");
 		sideDish5.setBounds(525, 250, 245, 200);
 		sideDish5.addActionListener(this);
 		sizePanel.add(sideDish5);
@@ -92,7 +110,53 @@ public class sixSize extends JFrame implements ActionListener {
 		order.setBounds(285, 500, 400, 90);
 		order.addActionListener(this);
 		sizePanel.add(order);
-		menu gui = new menu(sizePanel, 2, 0);
+		menu gui = new menu(this.getWidth(), this.getHeight(), 2 ,0);
+	    sizePanel.add(gui);
 		add(sizePanel, BorderLayout.CENTER);
 	}
+	public void setDish1(String s)
+	{
+		side1 = s;
+	}
+	public void setDish2(String s)
+	{
+		side2 = s;
+	}
+	public void setDish3(String s)
+	{
+		side3 = s;
+	}
+	public void setDish4(String s)
+	{
+		side4 = s;
+	}
+	public void setRice(String s)
+	{
+		riceString = s;
+	}
+	public void setbutton1Text(String s)
+	{
+		sideDish1.setText(s);
+	}
+	public void setbutton2Text(String s)
+	{
+		sideDish2.setText(s);
+	}
+	public void setbutton3Text(String s)
+	{
+		sideDish3.setText(s);
+	}
+	public void setbutton4Text(String s)
+	{
+		sideDish4.setText(s);
+	}
+	public void setbutton5Text(String s)
+	{
+		sideDish5.setText(s);
+	}
+	public void setbutton_RText(String s)
+	{
+		rice.setText(s);
+	}
 }
+

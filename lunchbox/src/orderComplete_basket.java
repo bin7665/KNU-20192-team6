@@ -1,4 +1,4 @@
-package mainPage;
+package project;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,4 +53,5 @@ public class orderComplete_basket extends JFrame implements ActionListener {
         add(menuPanel, BorderLayout.CENTER);
 	}
 }
+
 

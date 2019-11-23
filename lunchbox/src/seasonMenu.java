@@ -1,3 +1,4 @@
+package project;
 
 
 import javax.swing.JFrame;
@@ -78,3 +79,4 @@ public class seasonMenu extends JFrame implements ActionListener{
 		add(sizePanel, BorderLayout.CENTER);
 	}
 }
+
