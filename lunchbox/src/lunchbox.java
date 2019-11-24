@@ -1,5 +1,3 @@
-
-
 import java.io.Serializable;
 
 public class lunchbox implements Serializable{
@@ -10,9 +8,11 @@ public class lunchbox implements Serializable{
 	private String sidedish5; // 국 & 반찬
 	private String rice;
 	private String seasondish;
+	private int index;
 	
 	public lunchbox()
 	{
+		index = 0;
 		sidedish1 = "";
 		sidedish2 = "";
 		sidedish3 = "";
@@ -21,23 +21,26 @@ public class lunchbox implements Serializable{
 		rice = "";
 		seasondish = "";
 	}
-	public lunchbox(String sd1, String sd2, String sd5, String rice)
+	public lunchbox(int index, String sd1, String sd2, String sd5, String rice)
 	{
+		this.index = index;
 		this.sidedish1 = sd1;
 		this.sidedish2 = sd2;
 		this.sidedish5 = sd5;
 		this.rice = rice;
 	}//4개짜리 메뉴
-	public lunchbox(String sd1, String sd2, String sd3, String sd5, String rice)
+	public lunchbox(int index, String sd1, String sd2, String sd3, String sd5, String rice)
 	{
+		this.index = index;
 		this.sidedish1 = sd1;
 		this.sidedish2 = sd2;
 		this.sidedish3 = sd3;
 		this.sidedish5 = sd5;
 		this.rice = rice;
 	}//5개짜리 메뉴
-	public lunchbox(String sd1, String sd2, String sd3, String sd4, String sd5, String rice)
+	public lunchbox(int index, String sd1, String sd2, String sd3, String sd4, String sd5, String rice)
 	{
+		this.index = index;
 		this.sidedish1 = sd1;
 		this.sidedish2 = sd2;
 		this.sidedish1 = sd3;
@@ -45,10 +48,23 @@ public class lunchbox implements Serializable{
 		this.sidedish5 = sd5;
 		this.rice = rice;
 	}//6개짜리 메뉴
-	public lunchbox(String seasondish)
+	public lunchbox(int index, String seasondish)
 	{
+		this.index = index;
 		this.seasondish = seasondish;
 	}//계절메뉴
+	
+	//copy constructor
+	public lunchbox(lunchbox other) {
+		this.sidedish1 = other.sidedish1;
+		this.sidedish2 = other.sidedish2;
+		this.sidedish3 = other.sidedish3;
+		this.sidedish4 = other.sidedish4;
+		this.sidedish5 = other.sidedish5;
+		this.rice = other.rice;
+		this.seasondish = other.seasondish;
+	}
+	
 	public String getdish1() {
 		return sidedish1;
 	}
@@ -75,6 +91,10 @@ public class lunchbox implements Serializable{
 	
 	public String getseasondish() {
 		return seasondish;
+	}
+	
+	public int getindex() {
+		return index;
 	}
 	
 	public void setdish1(String s) {
@@ -104,7 +124,12 @@ public class lunchbox implements Serializable{
 	public void setseasondish(String s){
 		seasondish = s;
 	}
-	public String toString(int index) {
+	
+	public void setindex(int n) {
+		index = n;
+	}
+	
+	public String toString() {
 		if(index == 4)
 		{
 			return(sidedish1 + " " + sidedish2 + " " + sidedish5 + " " + rice);

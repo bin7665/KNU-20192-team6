@@ -1,5 +1,3 @@
-package project;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +18,7 @@ public class fourSize extends JFrame implements ActionListener{
 
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
+	private String name;
 	private String side1;
 	private String side2;
 	private String side3;
@@ -59,7 +58,8 @@ public class fourSize extends JFrame implements ActionListener{
 		order.setBounds(285, 500, 400, 90);
 		order.addActionListener(this);
 		sizePanel.add(order);
-		menu gui = new menu(sizePanel, 2, 0);
+		menu gui = new menu(this.getWidth(), this.getHeight(), 2 ,0, name);
+	    sizePanel.add(gui);
 		add(sizePanel, BorderLayout.CENTER);
 	
 	}
@@ -90,7 +90,7 @@ public class fourSize extends JFrame implements ActionListener{
 		}
 		else if(buttonString.equals("주문하기"))
 		{
-			order gui = new order(4);
+			order gui = new order(name, 4);
 			gui.setVisible(true);
 		}
 	}

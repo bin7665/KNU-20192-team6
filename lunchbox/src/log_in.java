@@ -76,13 +76,13 @@ public class log_in extends JFrame implements ActionListener{
 		class confirmWindow extends JFrame implements ActionListener{
 			JLabel confirmLabel;
 			JPanel buttonPanel;
+			JButton exitButton;
 			public confirmWindow() {
 				setSize(200, 100);
 				getContentPane().setBackground(Color.YELLOW);
 				setLocationRelativeTo(null);
 				setLayout(new BorderLayout());
 				setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				setLocation(49*6, 64*7);
 				confirmLabel = new JLabel("   ");
 				add(confirmLabel, BorderLayout.CENTER);
 				
@@ -90,15 +90,20 @@ public class log_in extends JFrame implements ActionListener{
 				buttonPanel.setBackground(Color.YELLOW);
 				buttonPanel.setLayout(new FlowLayout());
 				
-				JButton exitButton = new JButton("확인");
+				exitButton = new JButton("확인");
 				exitButton.addActionListener(this);
 				buttonPanel.add(exitButton);
 				
 				add(buttonPanel, BorderLayout.SOUTH);
 			}
 			
-			public void setmessage(String msg) {
-				confirmLabel.setText("   "+msg);
+			public void setmessage(String msg, Color c) {
+				confirmLabel.setText(msg);
+				confirmLabel.setForeground(c);
+			}
+			
+			public void setcolor(Color c) {
+				exitButton.setBackground(c);
 			}
 			
 			public void actionPerformed(ActionEvent e) {
@@ -128,7 +133,8 @@ public class log_in extends JFrame implements ActionListener{
 						}
 						else {//invalid pw
 							confirmWindow confirm = new confirmWindow();
-							confirm.setmessage("pw가 일치하지않습니다.");
+							confirm.setmessage("     pw가 일치하지않습니다.", Color.red);
+							confirm.setcolor(Color.red);
 							confirm.setVisible(true);
 						}
 					}catch(FileNotFoundException e1) {
@@ -141,7 +147,8 @@ public class log_in extends JFrame implements ActionListener{
 				}
 				else {//invalid id
 					confirmWindow confirm = new confirmWindow();
-					confirm.setmessage("존재하지 않는 ID입니다.");
+					confirm.setmessage("     존재하지 않는 ID입니다.", Color.red);
+					confirm.setcolor(Color.red);
 					confirm.setVisible(true);
 				}
 			}
@@ -156,7 +163,7 @@ public class log_in extends JFrame implements ActionListener{
 		}
 	}
 	
-//for the test main function	
+	//for the test main function	
 	public static void main(String[] args) {
 		log_in page1 = new log_in();
 		page1.setVisible(true);

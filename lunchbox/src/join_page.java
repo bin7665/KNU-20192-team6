@@ -171,12 +171,13 @@ public class join_page extends JFrame implements ActionListener{
 		class confirmWindow extends JFrame implements ActionListener{
 			JLabel confirmLabel;
 			JPanel buttonPanel;
+			JButton exitButton;
 			public confirmWindow() {
-				setSize(200, 100);
+				setSize(250, 100);
 				getContentPane().setBackground(Color.YELLOW);
 				setLayout(new BorderLayout());
 				setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				setLocation(49*6, 64*7);
+				setLocationRelativeTo(null);
 				confirmLabel = new JLabel("   회원가입이 완료되었습니다.");
 				add(confirmLabel, BorderLayout.CENTER);
 				
@@ -184,19 +185,20 @@ public class join_page extends JFrame implements ActionListener{
 				buttonPanel.setBackground(Color.YELLOW);
 				buttonPanel.setLayout(new FlowLayout());
 				
-				JButton exitButton = new JButton("확인");
+				exitButton = new JButton("확인");
 				exitButton.addActionListener(this);
 				buttonPanel.add(exitButton);
 				
 				add(buttonPanel, BorderLayout.SOUTH);
 			}
 			
-			public void setmessage(String msg) {
-				confirmLabel.setText("   "+msg);
+			public void setmessage(String msg, Color c) {
+				confirmLabel.setText(msg);
+				confirmLabel.setForeground(c);
 			}
 			
 			public void setcolor(Color c) {
-				buttonPanel.setBackground(c);
+				exitButton.setBackground(c);
 			}
 			
 			public void actionPerformed(ActionEvent e) {
@@ -215,20 +217,20 @@ public class join_page extends JFrame implements ActionListener{
 		if(actionCommand.contentEquals("중복 확인")) {
 			if(ID.getText().equals("아이디") || ID.getText().isEmpty()) {
 				confirmWindow reject1Window = new confirmWindow();
-				reject1Window.setmessage("유효하지 않은 아이디입니다.");
+				reject1Window.setmessage("유효하지 않은 아이디입니다.", Color.red);
 				reject1Window.setcolor(Color.red);
 				reject1Window.setVisible(true);	
 			}
 			else if(this.check_id()) {
 				confirmWindow reject1Window = new confirmWindow();
-				reject1Window.setmessage("이미 존재하는 아이디입니다.");
+				reject1Window.setmessage("이미 존재하는 아이디입니다.", Color.red);
 				reject1Window.setcolor(Color.red);
 				reject1Window.setVisible(true);
 			}
 			else {
 				idcheck = true;
 				confirmWindow reject1Window = new confirmWindow();
-				reject1Window.setmessage("사용가능한 아이디입니다.");
+				reject1Window.setmessage("사용가능한 아이디입니다.", Color.red);
 				reject1Window.setcolor(Color.yellow);
 				reject1Window.setVisible(true);
 			}
@@ -237,13 +239,13 @@ public class join_page extends JFrame implements ActionListener{
 			//confirm id and pw
 			if(!idcheck) {
 				confirmWindow reject1Window = new confirmWindow();
-				reject1Window.setmessage("아이디 중복확인을 해주세요");
+				reject1Window.setmessage("아이디 중복확인을 해주세요", Color.red);
 				reject1Window.setcolor(Color.red);
 				reject1Window.setVisible(true);
 			}
 			else if(this.check_pw()){
 				confirmWindow reject2Window = new confirmWindow();
-				reject2Window.setmessage("비밀번호 확인을 다시해주세요");
+				reject2Window.setmessage("비밀번호 확인을 다시해주세요", Color.red);
 				reject2Window.setcolor(Color.red);
 				reject2Window.setVisible(true);
 			}

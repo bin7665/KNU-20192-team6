@@ -1,5 +1,3 @@
-package project;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -74,7 +72,7 @@ public class sixSize extends JFrame implements ActionListener {
 		}
 	}
 	
-	public sixSize(String name)
+	public sixSize()
 	{
 		super("메뉴 정하기");
 		setSize(WIDTH, HEIGHT);
@@ -110,7 +108,7 @@ public class sixSize extends JFrame implements ActionListener {
 		order.setBounds(285, 500, 400, 90);
 		order.addActionListener(this);
 		sizePanel.add(order);
-		menu gui = new menu(this.getWidth(), this.getHeight(), 2 ,0);
+		menu gui = new menu(this.getWidth(), this.getHeight(), 2 ,0, name);
 	    sizePanel.add(gui);
 		add(sizePanel, BorderLayout.CENTER);
 	}

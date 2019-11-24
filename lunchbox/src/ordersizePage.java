@@ -1,5 +1,3 @@
-package project;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -47,8 +45,8 @@ public class ordersizePage extends JFrame implements ActionListener {
 		specialmenu.setBounds(285, 500, 400, 90);
 		specialmenu.addActionListener(this);
 		sizePanel.add(specialmenu);
-		menu gui = new menu(sizePanel, 1, 0);
-		gui.setVisible(true);
+		menu gui = new menu(this.getWidth(), this.getHeight(), 1 ,0, name);
+	    sizePanel.add(gui);
 		add(sizePanel, BorderLayout.CENTER);
 	}
 

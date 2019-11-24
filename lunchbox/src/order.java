@@ -1,7 +1,3 @@
-package project;
-
-
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,7 +37,7 @@ public class order extends JFrame implements ActionListener {
 			gui.setVisible(true);
 		}
 	}
-	public order(int kind)
+	public order(String name, int kind)
 	{
 		super("주문하기");
 		Kind = kind;
@@ -76,7 +72,8 @@ public class order extends JFrame implements ActionListener {
 		order_basket.setBounds(520, 500, 200, 90);
 		order_basket.addActionListener(this);
 		orderPanel.add(order_basket);
-        menu gui = new menu(orderPanel, 3, kind);
+		menu gui = new menu(this.getWidth(), this.getHeight(), 3 ,kind, name);
+	    orderPanel.add(gui);
 		add(orderPanel, BorderLayout.CENTER);
 	}
 }

@@ -5,13 +5,15 @@ public class User implements Serializable{
 	private String pw;
 	private String phone_num;
 	private String address;
-	//private lunchbox mybox; 
+	private lunchbox[] mybox; 
+	private int box_num=0;
 	
 	public User() {
 		name = "";
 		pw = "";
 		phone_num = "";
 		address = "";
+		mybox = new lunchbox[100];
 	}
 	
 	public User(String name, String pw, String phone_num, String address) {
@@ -19,6 +21,7 @@ public class User implements Serializable{
 		this.pw = pw;
 		this.phone_num = phone_num;
 		this.address = address;
+		mybox = new lunchbox[100];
 	}
 	
 	public String getname() {
@@ -37,6 +40,14 @@ public class User implements Serializable{
 		return address;
 	}
 	
+	public lunchbox[] getbox() {
+		return mybox;
+	}
+	
+	public int getbox_num() {
+		return box_num;
+	}
+	
 	public void setname(String s) {
 		name = s;
 	}
@@ -53,7 +64,15 @@ public class User implements Serializable{
 		address = s;
 	}
 	
+	public void setbox(lunchbox new_box) {
+		mybox[box_num++] = new lunchbox(new_box);
+	}
+	
 	public String toString() {
-		return name+ " " + pw + " " + phone_num + " " + address + "\n";
+		String[] order_list = new String[box_num];
+		for(int i=0; i<box_num; i++) {
+			order_list[i] = new String(mybox.toString()+"\n");
+		}
+		return name+ " " + pw + " " + phone_num + " " + address + "\n" +order_list;
 	}
 }
