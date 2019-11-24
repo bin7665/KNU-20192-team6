@@ -59,19 +59,19 @@ public class my_page extends JFrame implements ActionListener{
 			JButton ch_info = new JButton("정보변경");
 			ch_info.addActionListener(this);
 			ch_info.setFont(new Font("", Font.PLAIN, 50));
-			ch_info.setBounds( 150, 100, button_width,button_height);
+			ch_info.setBounds( 184, 100, button_width,button_height);
 			buttonPan.add(ch_info);
 			
 			JButton Ord_dir = new JButton("주문내역");
 			Ord_dir.addActionListener(this);
 			Ord_dir.setFont(new Font("", Font.PLAIN, 50));
-			Ord_dir.setBounds( 150, 250, button_width,button_height);
+			Ord_dir.setBounds( 184, 250, button_width,button_height);
 			buttonPan.add(Ord_dir);
 			
 			JButton Inq = new JButton("문의하기");
 			Inq.addActionListener(this);
 			Inq.setFont(new Font("", Font.PLAIN, 50));
-			Inq.setBounds( 150, 400, button_width,button_height);
+			Inq.setBounds( 184, 400, button_width,button_height);
 			buttonPan.add(Inq);
 
 			menu menuPan = new menu(this.getWidth(), this.getHeight(), 1, 0, userid);
