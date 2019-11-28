@@ -56,26 +56,26 @@ public class my_page extends JFrame implements ActionListener{
 			
 			JPanel buttonPan = new JPanel(null);
 			
-			JButton ch_info = new JButton("¡§∫∏∫Ø∞Ê");
+			JButton ch_info = new JButton("Ï†ïÎ≥¥Î≥ÄÍ≤Ω");
 			ch_info.addActionListener(this);
 			ch_info.setFont(new Font("", Font.PLAIN, 50));
 			ch_info.setBounds( 184, 100, button_width,button_height);
 			buttonPan.add(ch_info);
 			
-			JButton Ord_dir = new JButton("¡÷πÆ≥ªø™");
+			JButton Ord_dir = new JButton("Ï£ºÎ¨∏ÎÇ¥Ïó≠");
 			Ord_dir.addActionListener(this);
 			Ord_dir.setFont(new Font("", Font.PLAIN, 50));
 			Ord_dir.setBounds( 184, 250, button_width,button_height);
 			buttonPan.add(Ord_dir);
 			
-			JButton Inq = new JButton("πÆ¿««œ±‚");
+			JButton Inq = new JButton("Î¨∏ÏùòÌïòÍ∏∞");
 			Inq.addActionListener(this);
 			Inq.setFont(new Font("", Font.PLAIN, 50));
 			Inq.setBounds( 184, 400, button_width,button_height);
 			buttonPan.add(Inq);
 
 			menu menuPan = new menu(this.getWidth(), this.getHeight(), 1, 0, userid);
-			menuPan.setLocation(0,1024-380);
+			menuPan.setLocation(0,1024-520);
 			buttonPan.add(menuPan);
 			add(buttonPan, BorderLayout.CENTER);
 			
@@ -92,18 +92,18 @@ public class my_page extends JFrame implements ActionListener{
 		String actionCommand = e.getActionCommand();
 
 		//change information
-		if (actionCommand.equals("¡§∫∏∫Ø∞Ê")) {
+		if (actionCommand.equals("Ï†ïÎ≥¥Î≥ÄÍ≤Ω")) {
 			ch_inf newpage1 = new ch_inf(userid);
 			newpage1.setVisible(true);
 		} 
 		//order detail
-		else if (actionCommand.equals("¡÷πÆ≥ªø™")) {
+		else if (actionCommand.equals("Ï£ºÎ¨∏ÎÇ¥Ïó≠")) {
 			Order_dir newpage2 = new Order_dir(userid);
 			newpage2.setVisible(true);
 		}
 
 		//Inquiry
-		else if (actionCommand.equals("πÆ¿««œ±‚")) {
+		else if (actionCommand.equals("Î¨∏ÏùòÌïòÍ∏∞")) {
 			inquiry newpage3 = new inquiry();
 			newpage3.setVisible(true);
 		} else {
