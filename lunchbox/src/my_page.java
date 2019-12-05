@@ -73,9 +73,8 @@ public class my_page extends JFrame implements ActionListener{
 			Inq.setFont(new Font("", Font.PLAIN, 50));
 			Inq.setBounds( 184, 400, button_width,button_height);
 			buttonPan.add(Inq);
-
-			menu menuPan = new menu(this.getWidth(), this.getHeight(), 1, 0, userid);
-			menuPan.setLocation(0,1024-380);
+			menu menuPan = new menu(this.getWidth(), this.getHeight(), this, userid);
+			menuPan.setLocation(0,1024-520);
 			buttonPan.add(menuPan);
 			add(buttonPan, BorderLayout.CENTER);
 			

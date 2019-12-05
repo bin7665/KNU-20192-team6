@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+
+
 public class log_in extends JFrame implements ActionListener{
 	public static final int WINDOW_WIDTH = 768;//98*8
 	public static final int WINDOW_HEIGHT = 1024;//128*8
