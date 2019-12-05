@@ -23,8 +23,15 @@ public class my_page extends JFrame implements ActionListener{
 		
 		//user info read
 		try {
-			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_"+ userid));
-			User readone = (User)inputStream.readObject();
+			ObjectInputStream inputStream;
+			User readone;
+			if(userid.contentEquals("administer") ) {
+				inputStream = new ObjectInputStream(new FileInputStream(userid));
+				readone = (Administer)inputStream.readObject();
+			}else {
+				inputStream = new ObjectInputStream(new FileInputStream("user_"+ userid));
+				readone = (User)inputStream.readObject();
+			}
 
 			JPanel myPan = new JPanel();
 			myPan.setLayout(new GridLayout(1,2));

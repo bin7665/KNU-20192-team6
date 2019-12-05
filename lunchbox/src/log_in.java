@@ -15,6 +15,23 @@ public class log_in extends JFrame implements ActionListener{
 	
 	public log_in() {
 		super();
+		
+		// 관리자 아이디 생성
+		try{
+			final String name = "관리자";
+			final String pw = "super_admin";
+			final String phone_num = "01012345678";
+			final String address = "대구 광역시 경북대 여기저기";
+			final String company = "경대 컴퍼니";
+			
+			ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("administer"));
+			Administer newone = new Administer(name, pw, phone_num, address, company );
+			outputStream.writeObject(newone);
+			outputStream.close();
+		}catch(IOException e1) {
+			System.out.println("Problem with file output.");
+		}
+				
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		setLocationRelativeTo(null);
@@ -122,11 +139,37 @@ public class log_in extends JFrame implements ActionListener{
 			if(true) {
 				//check the ID
 				File id_f = new File("user_" +userid);
+				File id_admin = new File(userid);
 				if(id_f.isFile()) {
 					//check pw
 					try{
 						ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_" + userid));
 						User readone = (User)inputStream.readObject();
+						if(PW.getText().equals(readone.getpw())) {
+							//go to the my page
+							my_page new_page = new my_page(ID.getText());
+							new_page.setVisible(true);
+							this.setVisible(false);
+						}
+						else {//invalid pw
+							confirmWindow confirm = new confirmWindow();
+							confirm.setmessage("     pw가 일치하지않습니다.", Color.red);
+							confirm.setcolor(Color.red);
+							confirm.setVisible(true);
+						}
+					}catch(FileNotFoundException e1) {
+						System.out.println("Cannot find datafile.");
+					}catch(ClassNotFoundException e1) {
+						System.out.println("Problems with file input");
+					}catch(IOException e1) {
+						System.out.println("Problems with file input.");
+					}
+				}
+				else if(id_admin.isFile()) {
+					//check pw
+					try{
+						ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(userid));
+						Administer readone = (Administer)inputStream.readObject();
 						if(PW.getText().equals(readone.getpw())) {
 							//go to the my page
 							my_page new_page = new my_page(ID.getText());
