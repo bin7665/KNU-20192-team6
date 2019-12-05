@@ -7,7 +7,6 @@ public class User implements Serializable{
    private String pw;
    private String phone_num;
    private String address;
-   private String inquiry;
    private lunchbox[] mybox;//order_list
    private lunchbox[] mybasket;//basket
    private int box_num;
@@ -18,19 +17,17 @@ public class User implements Serializable{
       pw = "";
       phone_num = "";
       address = "";
-      inquiry = "";
       mybox = new lunchbox[100];
       mybasket = new lunchbox[100];
       box_num =0;
       basket_num = 0;
    }
    
-   public User(String name, String pw, String phone_num, String address, String inquiry) {
+   public User(String name, String pw, String phone_num, String address) {
       this.name = name;
       this.pw = pw;
       this.phone_num = phone_num;
       this.address = address;
-      this.inquiry = inquiry;
       mybox = new lunchbox[100];
       mybasket = new lunchbox[100];
       box_num = 0;
@@ -52,10 +49,7 @@ public class User implements Serializable{
    public String getaddress() {
       return address;
    }
-   
-   public String getinquiry() {
-	   return inquiry;
-   }
+  
    
    public lunchbox[] getbox() {
       return mybox;
@@ -88,11 +82,7 @@ public class User implements Serializable{
    public void setaddress(String s) {
       address = s;
    }
-   
-   public void setinquiry(String s) {
-	   inquiry = s;
-   }
-   
+
    public void setbox(lunchbox new_box) {
       mybox[box_num++] = new lunchbox(new_box);
    }

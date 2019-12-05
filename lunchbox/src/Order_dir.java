@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class Order_dir extends JFrame implements ActionListener{
-	
+	private static int LWIDTH = 768;
+	private static int LHEIGHT = 100;
 	public Order_dir() {
 		super();
 	}
@@ -52,7 +53,30 @@ public class Order_dir extends JFrame implements ActionListener{
 			
 			//readone.order or readone.lunchbox class update
 			//and here...
-			
+			JPanel orderPan = new JPanel();
+			orderPan.setLayout(null);
+			JScrollPane scrollbar = new JScrollPane();
+			scrollbar.setViewportView(orderPan);
+			//get lunchbox
+			int length = readone.getbox_num();
+			lunchbox[] box = readone.getbox();
+			if(length > 0) {
+				JButton orderLabel[] = new JButton[length];
+				for(int i=0; i<length; i++) {
+					orderLabel[i] = new JButton(box[i].toString());
+					orderLabel[i].setFont(new Font("", Font.PLAIN, 50));
+					orderLabel[i].setHorizontalAlignment(JButton.CENTER);
+					orderLabel[i].setBounds( 0, 0+i*LHEIGHT, LWIDTH, LHEIGHT);
+					orderPan.add(orderLabel[i]);
+				}
+			}else {
+				JLabel orderLabel = new JLabel("No order list");
+				orderLabel.setFont(new Font("", Font.PLAIN, 100));
+				orderLabel.setHorizontalAlignment(JLabel.CENTER);
+				orderLabel.setBounds( 0, 100, LWIDTH, LHEIGHT);
+				orderPan.add(orderLabel);
+			}
+			add(orderPan, BorderLayout.CENTER);
 		}catch(FileNotFoundException e1) {
 			System.out.println("Cannot find datafile.");
 		}catch(ClassNotFoundException e1) {
@@ -63,6 +87,6 @@ public class Order_dir extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-	
+		
 	}
 }

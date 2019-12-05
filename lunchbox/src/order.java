@@ -51,7 +51,6 @@ public class order extends JFrame implements ActionListener {
 				inputStream.close();
 				readone.setphone_num(phoneNum.getText());
 				readone.setaddress(addressString.getText());
-				readone.setinquiry(inquireString.getText());
 				ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("user_" +user));
 				outputStream.writeObject(readone);
 				outputStream.close();
@@ -73,7 +72,6 @@ public class order extends JFrame implements ActionListener {
 				User readone = (User)inputStream.readObject();
 				readone.setphone_num(phoneNum.getText());
 				readone.setaddress(addressString.getText());
-				readone.setinquiry(inquireString.getText());
 				temp = readone.getbox()[readone.getbox_num() - 1];
 				inputStream.close();
 				readone.setbasket(temp);

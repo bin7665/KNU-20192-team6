@@ -27,6 +27,7 @@ public class menu extends JPanel implements ActionListener {
 	public menu(int width, int height, JFrame page, String ID)
 	{
 		cur = page;
+		userid = ID;
 		button_size = width/4;
 		setLocation(0, height-120);
 		setSize(width,128);
