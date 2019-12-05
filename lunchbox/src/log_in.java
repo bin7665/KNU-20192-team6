@@ -172,7 +172,7 @@ public class log_in extends JFrame implements ActionListener{
 						Administer readone = (Administer)inputStream.readObject();
 						if(PW.getText().equals(readone.getpw())) {
 							//go to the my page
-							my_page new_page = new my_page(ID.getText());
+							admin_page new_page = new admin_page(ID.getText());
 							new_page.setVisible(true);
 							this.setVisible(false);
 						}
