@@ -1,3 +1,5 @@
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class orderComplete extends JFrame implements ActionListener {
 	private JPanel menuPanel;
+	private String user;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	
@@ -25,9 +28,10 @@ public class orderComplete extends JFrame implements ActionListener {
 		
 	}
 	
-	public orderComplete(int kind)
+	public orderComplete(String ID, int kind)
 	{
 		super("주문 완료");
+		user = ID;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout( ));

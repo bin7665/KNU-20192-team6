@@ -1,88 +1,71 @@
+
+
 import java.io.Serializable;
 
 public class lunchbox implements Serializable{
-	private String sidedish1;
-	private String sidedish2;
-	private String sidedish3;
-	private String sidedish4;
-	private String sidedish5; // 국 & 반찬
 	private String rice;
 	private String seasondish;
+	private String sidedish[];
 	private int index;
 	
 	public lunchbox()
 	{
 		index = 0;
-		sidedish1 = "";
-		sidedish2 = "";
-		sidedish3 = "";
-		sidedish4 = "";
-		sidedish5 = "";
+		sidedish = new String[index];
 		rice = "";
 		seasondish = "";
 	}
-	public lunchbox(int index, String sd1, String sd2, String sd5, String rice)
+	public lunchbox(String sd1, String sd2, String sd5, String rice)
 	{
-		this.index = index;
-		this.sidedish1 = sd1;
-		this.sidedish2 = sd2;
-		this.sidedish5 = sd5;
+		this.index = 4;
+		sidedish = new String[index];
+		this.sidedish[0] = sd1;
+		this.sidedish[1] = sd2;
+		this.sidedish[2] = sd5;
 		this.rice = rice;
 	}//4개짜리 메뉴
-	public lunchbox(int index, String sd1, String sd2, String sd3, String sd5, String rice)
+	public lunchbox(String sd1, String sd2, String sd3, String sd5, String rice)
 	{
-		this.index = index;
-		this.sidedish1 = sd1;
-		this.sidedish2 = sd2;
-		this.sidedish3 = sd3;
-		this.sidedish5 = sd5;
+		this.index = 5;
+		sidedish = new String[index];
+		this.sidedish[0] = sd1;
+		this.sidedish[1] = sd2;
+		this.sidedish[2] = sd3;
+		this.sidedish[3] = sd5;
 		this.rice = rice;
 	}//5개짜리 메뉴
-	public lunchbox(int index, String sd1, String sd2, String sd3, String sd4, String sd5, String rice)
+	public lunchbox(String sd1, String sd2, String sd3, String sd4, String sd5, String rice)
 	{
-		this.index = index;
-		this.sidedish1 = sd1;
-		this.sidedish2 = sd2;
-		this.sidedish1 = sd3;
-		this.sidedish2 = sd4;
-		this.sidedish5 = sd5;
+		this.index = 6;
+		sidedish = new String[index];
+		this.sidedish[0] = sd1;
+		this.sidedish[1] = sd2;
+		this.sidedish[2] = sd3;
+		this.sidedish[3] = sd4;
+		this.sidedish[4] = sd5;
 		this.rice = rice;
 	}//6개짜리 메뉴
-	public lunchbox(int index, String seasondish)
+	public lunchbox(String seasondish)
 	{
-		this.index = index;
+		this.index = 7;
 		this.seasondish = seasondish;
 	}//계절메뉴
 	
 	//copy constructor
 	public lunchbox(lunchbox other) {
-		this.sidedish1 = other.sidedish1;
-		this.sidedish2 = other.sidedish2;
-		this.sidedish3 = other.sidedish3;
-		this.sidedish4 = other.sidedish4;
-		this.sidedish5 = other.sidedish5;
+		this.index = other.index;
+		sidedish = new String[this.index];
+		for(int i = 0; i<index; i++)
+		{
+			this.sidedish[i] = other.sidedish[i];
+		}
+		this.sidedish = other.sidedish.clone();
 		this.rice = other.rice;
 		this.seasondish = other.seasondish;
 	}
 	
-	public String getdish1() {
-		return sidedish1;
-	}
-	
-	public String getdish2() {
-		return sidedish2;
-	}
-	
-	public String getdish3() {
-		return sidedish3;
-	}
-	
-	public String getdish4() {
-		return sidedish4;
-	}
-	
-	public String getdish5() {
-		return sidedish5;//국
+	public String getdish(int index) {
+		return sidedish[index];
 	}
 	
 	public String getrice() {
@@ -97,24 +80,8 @@ public class lunchbox implements Serializable{
 		return index;
 	}
 	
-	public void setdish1(String s) {
-		sidedish1 = s; 
-	}
-	
-	public void setdish2(String s) {
-		sidedish2 = s; 
-	}
-	
-	public void setdish3(String s) {
-		sidedish3 = s; 
-	}
-	
-	public void setdish4(String s) {
-		sidedish4 = s; 
-	}
-	
-	public void setdish5(String s) {
-		sidedish5 = s; 
+	public void setdish(int index, String s) {
+		sidedish[index] = s; 
 	}
 	
 	public void setrice(String s) {
@@ -129,26 +96,28 @@ public class lunchbox implements Serializable{
 		index = n;
 	}
 	
-	public String toString() {
-		if(index == 4)
+	public String toString()
+	{
+		if(this.index == 4)
 		{
-			return(sidedish1 + " " + sidedish2 + " " + sidedish5 + " " + rice);
+			return index + " " + sidedish[0] + " " + sidedish[1] + " " + sidedish[2] + " " + rice; 
 		}
-		else if(index == 5)
+		else if(this.index == 5)
 		{
-			return(sidedish1 + " " + sidedish2 + " " + sidedish3 + " " + sidedish5 + " " + rice);
+			return index + " " + sidedish[0] + " " + sidedish[1] + " " + sidedish[2] + " " + sidedish[3] + " " + rice;
 		}
-		else if(index == 6)
+		else if(this.index == 6)
 		{
-			return(sidedish1 + " " + sidedish2 + " " + sidedish3 + " " + sidedish4 + " " + sidedish5 + " " + rice);
+			return index + " " + sidedish[0] + " " + sidedish[1] + " " + sidedish[2] + " " + sidedish[3] + " " +  sidedish[4] + " " + rice;
 		}
-		else if(index == 7)
+		else if(this.index == 7)
 		{
-			return(seasondish);
+			return index + " " + seasondish;
 		}
 		else
 		{
-			return ("error");
+			return "error";
 		}
 	}
 }
+

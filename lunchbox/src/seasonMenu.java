@@ -12,12 +12,20 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 
 public class seasonMenu extends JFrame implements ActionListener{
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	private String name;
+	private lunchbox temp;
+	private String seasonmenu;
 	private JPanel sizePanel;
 
 	public void actionPerformed(ActionEvent e) {
@@ -40,14 +48,32 @@ public class seasonMenu extends JFrame implements ActionListener{
 		}
 		else if(buttonString.equals("주문하기"))
 		{
+			temp = new lunchbox(seasonmenu);
+			try {
+				ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_"+ name));
+				User readone = (User)inputStream.readObject();
+				readone.setbox(temp);
+				inputStream.close();
+				ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("user_"+ name));
+				outputStream.writeObject(readone);
+				outputStream.close();
+			}
+			catch(FileNotFoundException e1) {
+				System.out.println("Cannot find datafile.");
+			}catch(ClassNotFoundException e1) {
+				System.out.println("Problems with file input");
+			}catch(IOException e1) {
+				System.out.println("Problems with file input.");
+			}
 			order gui = new order(name, 7);
 			gui.setVisible(true);
 		}
 		
 	}
-	public seasonMenu()
+	public seasonMenu(String user)
 	{
 		super("도시락 크기 선정");
+		name = user;  
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -73,7 +99,7 @@ public class seasonMenu extends JFrame implements ActionListener{
 		order.setBounds(285, 500, 400, 90);
 		order.addActionListener(this);
 		sizePanel.add(order);
-		menu gui = new menu(this.getWidth(), this.getHeight(), 2 ,0, name);
+		menu gui = new menu(this.getWidth(), this.getHeight(), this, name);
 	    sizePanel.add(gui);
 		add(sizePanel, BorderLayout.CENTER);
 	}
