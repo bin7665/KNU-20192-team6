@@ -1,4 +1,5 @@
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -94,6 +95,7 @@ public class sixSize extends JFrame implements ActionListener {
 		{
 			order gui = new order(name, 6);
 			gui.setVisible(true);
+			this.dispose();
 		}
 	}
 	

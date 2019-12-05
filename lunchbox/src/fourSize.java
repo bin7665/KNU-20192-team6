@@ -1,4 +1,5 @@
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -119,6 +120,7 @@ public class fourSize extends JFrame implements ActionListener{
 			}
 			order gui = new order(name, 4);
 			gui.setVisible(true);
+			this.dispose();
 		}
 	}
 	public void setDish1(String s)

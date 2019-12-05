@@ -1,4 +1,5 @@
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -59,21 +60,25 @@ public class ordersizePage extends JFrame implements ActionListener {
 		{
 			fourSize gui = new fourSize(name);
 			gui.setVisible(true);
+			this.dispose();
 		}
 		else if(buttonString.equals("(밥, 국, 반찬 3개) or (밥, 반찬 4개)"))
 		{
 			fiveSize gui = new fiveSize(name);
 			gui.setVisible(true);
+			this.dispose();
 		}
 		else if(buttonString.equals("(밥, 국, 반찬 4개) or (밥, 반찬 5개)"))
 		{
 			sixSize gui = new sixSize(name);
 			gui.setVisible(true);
+			this.dispose();
 		}
 		else if(buttonString.equals("계절 음식"))
 		{
 			seasonMenu gui = new seasonMenu(name);
 			gui.setVisible(true);
+			this.dispose();
 		}
 		
 	}

@@ -16,6 +16,10 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.awt.event.ActionEvent;
 
 public class orderComplete extends JFrame implements ActionListener {
@@ -41,9 +45,22 @@ public class orderComplete extends JFrame implements ActionListener {
         comPlete.setBounds(440, 100, 400, 180);
         comPlete.setBackground(Color.GREEN);
 		menuPanel.add(comPlete);
-		JLabel addressList = new JLabel("배달 주소 : ");
-		addressList.setBounds(300, 340, 400, 90);
-		menuPanel.add(addressList);
+		try
+		{
+			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_"+ user));
+			User readone = (User)inputStream.readObject();
+			JLabel addressList = new JLabel("배달 주소 : " + readone.getaddress());
+			addressList.setBounds(300, 340, 400, 90);
+			menuPanel.add(addressList);
+			inputStream.close();
+		}
+		catch(FileNotFoundException e1) {
+			System.out.println("Cannot find datafile.");
+		}catch(ClassNotFoundException e1) {
+			System.out.println("Problems with file input");
+		}catch(IOException e1) {
+			System.out.println("Problems with file input.");
+		}
 		JButton phoneNum = new JButton("배달 정보 보기 ");
 		phoneNum.setBounds(300, 430, 400, 90);
 		menuPanel.add(phoneNum);

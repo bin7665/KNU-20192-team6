@@ -1,3 +1,5 @@
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -67,6 +69,7 @@ public class seasonMenu extends JFrame implements ActionListener{
 			}
 			order gui = new order(name, 7);
 			gui.setVisible(true);
+			this.dispose();
 		}
 		
 	}

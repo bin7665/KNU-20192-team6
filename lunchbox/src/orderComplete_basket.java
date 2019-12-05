@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 public class orderComplete_basket extends JFrame implements ActionListener {
 
 	private JPanel menuPanel;
+	private String name;
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	
@@ -28,9 +29,10 @@ public class orderComplete_basket extends JFrame implements ActionListener {
 		
 	}
 	
-	public orderComplete_basket(int kind)
+	public orderComplete_basket(String user, int kind)
 	{
 		super("장바구니에 담기 완료");
+		name = user;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout( ));
@@ -40,9 +42,6 @@ public class orderComplete_basket extends JFrame implements ActionListener {
         comPlete.setBounds(400, 100, 400, 180);
         comPlete.setBackground(Color.GREEN);
 		menuPanel.add(comPlete);
-		JLabel addressList = new JLabel("배달 주소 : ");
-		addressList.setBounds(300, 340, 400, 90);
-		menuPanel.add(addressList);
 		JButton phoneNum = new JButton("배달 정보 보기 ");
 		phoneNum.setBounds(300, 430, 400, 90);
 		menuPanel.add(phoneNum);

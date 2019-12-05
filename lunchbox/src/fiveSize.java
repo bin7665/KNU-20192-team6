@@ -1,4 +1,5 @@
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +14,10 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
@@ -83,6 +88,7 @@ public class fiveSize extends JFrame implements ActionListener {
 			}
 			order gui = new order(name, 5);
 			gui.setVisible(true);
+			this.dispose();
 		}
 	}
 	public fiveSize(String user)
