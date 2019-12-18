@@ -93,6 +93,7 @@ public class order extends JFrame implements ActionListener {
 	public order(String name, int kind)
 	{
 		super("주문하기");
+		setLocation(450,150);
 			Kind = kind;
 			user = name;
 			setSize(WIDTH, HEIGHT);

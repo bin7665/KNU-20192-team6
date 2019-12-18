@@ -98,25 +98,17 @@ public class lunchbox implements Serializable{
 	
 	public String toString()
 	{
-		if(this.index == 4)
-		{
-			return index + " " + sidedish[0] + " " + sidedish[1] + " " + sidedish[2] + " " + rice; 
+		if(this.index == 7) {
+			return seasondish;
 		}
-		else if(this.index == 5)
-		{
-			return index + " " + sidedish[0] + " " + sidedish[1] + " " + sidedish[2] + " " + sidedish[3] + " " + rice;
-		}
-		else if(this.index == 6)
-		{
-			return index + " " + sidedish[0] + " " + sidedish[1] + " " + sidedish[2] + " " + sidedish[3] + " " +  sidedish[4] + " " + rice;
-		}
-		else if(this.index == 7)
-		{
-			return index + " " + seasondish;
-		}
-		else
-		{
-			return "error";
+		else {
+			String str = "";
+			for(int i=0; i<this.index-1; i++) {
+				str += sidedish[i] + " ";
+			}
+			str += rice;
+			
+			return str;
 		}
 	}
 }

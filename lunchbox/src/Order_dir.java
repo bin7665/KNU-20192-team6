@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.StringTokenizer;
 
 public class Order_dir extends JFrame implements ActionListener{
+	private String userid;
 	private static int LWIDTH = 768;
 	private static int LHEIGHT = 100;
 	public Order_dir() {
@@ -15,6 +17,7 @@ public class Order_dir extends JFrame implements ActionListener{
 	
 	public Order_dir(String MYID) {
 		super();
+		userid = MYID;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(log_in.WINDOW_WIDTH, log_in.WINDOW_HEIGHT);
 		setLocationRelativeTo(null);
@@ -55,19 +58,26 @@ public class Order_dir extends JFrame implements ActionListener{
 			//and here...
 			JPanel orderPan = new JPanel();
 			orderPan.setLayout(null);
+			
 			JScrollPane scrollbar = new JScrollPane();
+			scrollbar.setBounds(740,260,12,725);
+			scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollbar.setViewportView(orderPan);
+			add(scrollbar);
+			
 			//get lunchbox
 			int length = readone.getbox_num();
 			lunchbox[] box = readone.getbox();
 			if(length > 0) {
-				JButton orderLabel[] = new JButton[length];
-				for(int i=0; i<length; i++) {
-					orderLabel[i] = new JButton(box[i].toString());
-					orderLabel[i].setFont(new Font("", Font.PLAIN, 50));
-					orderLabel[i].setHorizontalAlignment(JButton.CENTER);
-					orderLabel[i].setBounds( 0, 0+i*LHEIGHT, LWIDTH, LHEIGHT);
-					orderPan.add(orderLabel[i]);
+				JButton orderButton[] = new JButton[length];
+				for(int i=0, j=length-1; i<length && j>=0; i++, j--) {
+					orderButton[i] = new JButton(box[j].toString());
+					orderButton[i].addActionListener(this);
+					orderButton[i].setFont(new Font("", Font.PLAIN, 30));
+					orderButton[i].setHorizontalAlignment(JButton.CENTER);
+					orderButton[i].setBounds( 0, 0+i*LHEIGHT, LWIDTH-30, LHEIGHT);
+					orderButton[i].setBackground(new Color(238,238,238));
+					orderPan.add(orderButton[i]);
 				}
 			}else {
 				JLabel orderLabel = new JLabel("No order list");
@@ -87,6 +97,29 @@ public class Order_dir extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		dispose();
 		
+		Object o = e.getSource();
+		JButton Bo = (JButton) o;
+		String Txt = Bo.getText();
+		String[] Str = Txt.split(" ");
+		
+		if(Str.length == 4) {
+			fourSize gui =new fourSize(userid, Str[0], Str[1], Str[2], Str[3]);
+			gui.setVisible(true);
+		}
+		else if(Str.length == 5) {
+			//order_box = new lunchbox(Str[0], Str[1], Str[2], Str[3], Str[4]);
+		}
+		else {
+			//order_box = new lunchbox(Str[0], Str[1], Str[2], Str[3], Str[4], Str[5]);
+		}
+	}
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		g.setColor(new Color(222, 238, 247));
+		g.setFont(new Font("Couruer New", Font.BOLD, 28));
+		g.drawString("ORDER_LIST", 70, 75);
 	}
 }

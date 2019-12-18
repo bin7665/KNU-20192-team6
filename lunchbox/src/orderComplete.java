@@ -28,13 +28,10 @@ public class orderComplete extends JFrame implements ActionListener {
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	
-	public void actionPerformed(ActionEvent e) {
-		
-	}
-	
 	public orderComplete(String ID, int kind)
 	{
 		super("주문 완료");
+		setLocation(450,150);
 		user = ID;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -61,8 +58,9 @@ public class orderComplete extends JFrame implements ActionListener {
 		}catch(IOException e1) {
 			System.out.println("Problems with file input.");
 		}
-		JButton phoneNum = new JButton("배달 정보 보기 ");
+		JButton phoneNum = new JButton("배달 정보 보기");
 		phoneNum.setBounds(300, 430, 400, 90);
+		phoneNum.addActionListener(this);
 		menuPanel.add(phoneNum);
 		JButton orderList = new JButton("주문 내역 보기");
 		orderList.setBounds(300, 550, 400, 90);
@@ -71,5 +69,21 @@ public class orderComplete extends JFrame implements ActionListener {
         add(menuPanel, BorderLayout.CENTER);
 	}
 
+
+	public void actionPerformed(ActionEvent e) {
+		String buttonString = e.getActionCommand();
+		if(buttonString.equals("배달 정보 보기")){
+			dispose();
+			View_delivery_information gui = new View_delivery_information();
+			gui.setVisible(true);
+			gui.setLocationRelativeTo(null);
+		}
+		else if(buttonString.equals("주문 내역 보기")){
+			dispose();
+			Order_dir gui = new Order_dir(user);
+			gui.setVisible(true);
+			gui.setLocationRelativeTo(null);
+		}
+	}
 }
 

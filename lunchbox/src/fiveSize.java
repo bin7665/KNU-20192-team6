@@ -94,6 +94,7 @@ public class fiveSize extends JFrame implements ActionListener {
 	public fiveSize(String user)
 	{
 		super("메뉴 정하기");
+		setLocation(450,150);
 		name = user;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

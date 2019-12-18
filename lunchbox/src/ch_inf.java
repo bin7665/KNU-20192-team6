@@ -16,10 +16,10 @@ public class ch_inf extends JFrame implements ActionListener{
 	private JButton join;
 	private String userid;
 	
-	private int Text_Field_width=440;
+	private int Text_Field_width=300;
 	private int Text_Field_height=50;
-	private int x = 30;
-	private int y = 60;
+	private int x = 5;
+	private int y = 35;
 	
 	public ch_inf() {
 		super();
@@ -29,13 +29,9 @@ public class ch_inf extends JFrame implements ActionListener{
 		super();
 		userid = ID;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(log_in.WINDOW_WIDTH/4*3, log_in.WINDOW_HEIGHT/4*3);
+		setSize(log_in.WINDOW_WIDTH/2, log_in.WINDOW_HEIGHT/2);
 		setLocationRelativeTo(null);
 		setLayout(null);
-		
-		JPanel junkPan = new JPanel();
-		junkPan.setBounds(150+x,y,Text_Field_width,Text_Field_height);
-		add(junkPan);
 
 		try {
 			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("user_"+ userid));
@@ -44,7 +40,7 @@ public class ch_inf extends JFrame implements ActionListener{
 			pw.setEditable(false);
 			pw.setHorizontalAlignment(JTextField.CENTER);
 			pw.addMouseListener(new MouseEventDemo());
-			pw.setBounds(y,80+2*x+Text_Field_height,Text_Field_width,Text_Field_height);
+			pw.setBounds(y,2*x+Text_Field_height,Text_Field_width,Text_Field_height);
 			add(pw);
 			
 			JPanel c_pwPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -52,7 +48,7 @@ public class ch_inf extends JFrame implements ActionListener{
 			confirm_pw.setHorizontalAlignment(JTextField.CENTER);
 			confirm_pw.setEditable(false);
 			confirm_pw.addMouseListener(new MouseEventDemo());
-			confirm_pw.setBounds(y,80+3*x+2*Text_Field_height,Text_Field_width,Text_Field_height);
+			confirm_pw.setBounds(y,3*x+2*Text_Field_height,Text_Field_width,Text_Field_height);
 			add(confirm_pw);
 			
 			JPanel phonePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -60,7 +56,7 @@ public class ch_inf extends JFrame implements ActionListener{
 			phone_num.setHorizontalAlignment(JTextField.CENTER);
 			phone_num.setEditable(false);
 			phone_num.addMouseListener(new MouseEventDemo());
-			phone_num.setBounds(y,80+4*x+3*Text_Field_height,Text_Field_width,Text_Field_height);
+			phone_num.setBounds(y,4*x+3*Text_Field_height,Text_Field_width,Text_Field_height);
 			add(phone_num);
 			
 			JPanel addPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -68,7 +64,7 @@ public class ch_inf extends JFrame implements ActionListener{
 			address.setEditable(false);
 			address.setHorizontalAlignment(JTextField.CENTER);
 			address.addMouseListener(new MouseEventDemo());
-			address.setBounds(y,80+5*x+4*Text_Field_height,Text_Field_width,3*Text_Field_height);
+			address.setBounds(y,5*x+4*Text_Field_height,Text_Field_width,3*Text_Field_height);
 			add(address);
 		}catch(FileNotFoundException e1) {
 			System.out.println("Cannot find datafile.");
@@ -81,7 +77,7 @@ public class ch_inf extends JFrame implements ActionListener{
 		JButton change_confirm = new JButton("º¯°æ");
 		change_confirm.addActionListener(this);
 		change_confirm.setPreferredSize(new Dimension(Text_Field_width,Text_Field_height));
-		change_confirm.setBounds(log_in.WINDOW_WIDTH/8*3-50, log_in.WINDOW_HEIGHT/4*3-100, 100, 50);
+		change_confirm.setBounds(log_in.WINDOW_WIDTH/4-55, log_in.WINDOW_HEIGHT/2-100, 100, 50);
 		add(change_confirm);
 	}
 	

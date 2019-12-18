@@ -103,6 +103,7 @@ public class sixSize extends JFrame implements ActionListener {
 	{
 		super("메뉴 정하기");
 		name = user;
+		setLocation(450,150);
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());

@@ -43,11 +43,11 @@ public class my_page extends JFrame implements ActionListener{
 			JPanel InFoPan = new JPanel(new GridLayout(2,1));
 			InFoPan.setBackground(Color.BLUE);
 			JLabel Name = new JLabel(readone.getname());
-			Name.setFont(new Font("Serif", Font.PLAIN, 60));
+			Name.setFont(new Font("Serif", Font.PLAIN | Font.BOLD, 60));
 			Name.setForeground(Color.WHITE);
 			InFoPan.add(Name);
 			JLabel ID = new JLabel("ID : "+userid);
-			ID.setFont(new Font("Serif", Font.PLAIN, 60));
+			ID.setFont(new Font("Serif", Font.PLAIN | Font.BOLD, 60));
 			ID.setForeground(Color.WHITE);
 			InFoPan.add(ID);
 			
@@ -74,7 +74,7 @@ public class my_page extends JFrame implements ActionListener{
 			Inq.setBounds( 184, 400, button_width,button_height);
 			buttonPan.add(Inq);
 			menu menuPan = new menu(this.getWidth(), this.getHeight(), this, userid);
-			menuPan.setLocation(0,1024-520);
+			menuPan.setLocation(0,1024-400);
 			buttonPan.add(menuPan);
 			add(buttonPan, BorderLayout.CENTER);
 			
@@ -108,5 +108,12 @@ public class my_page extends JFrame implements ActionListener{
 		} else {
 			System.err.println("Error");
 		}
+	}
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		g.setColor(new Color(222, 238, 247));
+		g.setFont(new Font("Couruer New", Font.BOLD, 28));
+		g.drawString("MY PAGE", 70, 75);
 	}
 }

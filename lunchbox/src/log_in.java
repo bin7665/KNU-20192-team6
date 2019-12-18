@@ -10,8 +10,8 @@ public class log_in extends JFrame implements ActionListener{
 	public static final int WINDOW_HEIGHT = 1024;//128*8
 	private JButton login;//log in
 	private JButton join;//join membership
-	private JTextField ID;
-	private JTextField PW;
+	private TextField ID;
+	private TextField PW;
 	
 	public log_in() {
 		super();
@@ -46,11 +46,11 @@ public class log_in extends JFrame implements ActionListener{
 		Image newimg = img.getScaledInstance(400, 500, java.awt.Image.SCALE_SMOOTH);
 		lunchIcon = new ImageIcon(newimg);
 		lunchlab.setIcon(lunchIcon);
-		lunchlab.setBorder(BorderFactory.createEmptyBorder(80,160,10,10));
+		lunchlab.setBorder(BorderFactory.createEmptyBorder(110,160,10,10));
 		add(lunchlab, BorderLayout.NORTH);
 		
-		JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		ID = new JTextField(15);
+		JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+		ID = new TextField(20);
 		ID.setFont(new Font("Serif", Font.PLAIN, 30));
 		ID.setEditable(true);
 		ID.setBackground(Color.white);
@@ -60,26 +60,28 @@ public class log_in extends JFrame implements ActionListener{
 		inputPanel.add(IDlab);
 		inputPanel.add(ID);
 		
-		PW = new JTextField(15);
+		PW = new TextField(20);
 		PW.setFont(new Font("Serif", Font.PLAIN, 30));
+		PW.setEchoChar('*');
 		PW.setEditable(true);
 		PW.setBackground(Color.white);
+		
 		JLabel PWlab = new JLabel("PW:");
 		PWlab.setFont(new Font("Serif", Font.PLAIN, 30));
 		inputPanel.add(PWlab);
 		inputPanel.add(PW);
 		
-		inputPanel.setBorder(BorderFactory.createEmptyBorder(50,150,50,150));
+		inputPanel.setBorder(BorderFactory.createEmptyBorder(50,120,50,150));
 		add(inputPanel, BorderLayout.CENTER);
 		
-		JPanel buttonPanel =new JPanel(new FlowLayout());
+		JPanel buttonPanel =new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 		login = new JButton("login");
 		login.addActionListener(this);
-		login.setPreferredSize(new Dimension(200,50));
+		login.setPreferredSize(new Dimension(120,50));
 		buttonPanel.add(login);
 		join = new JButton("join");
 		join.addActionListener(this);
-		join.setPreferredSize(new Dimension(200,50));
+		join.setPreferredSize(new Dimension(120,50));
 		buttonPanel.add(join);
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10,150,50,150));
 		
@@ -214,4 +216,12 @@ public class log_in extends JFrame implements ActionListener{
 		page1.setVisible(true);
 	}
 
+	public void paint(Graphics g) {
+		super.paint(g);
+		g.setColor(new Color(108,129,222));
+		g.setFont(new Font("Couruer New", Font.BOLD, 40));
+		g.drawString("KNU Lunch Box", 220, 120);
+		g.setColor(Color.LIGHT_GRAY);
+		g.draw3DRect(140,70, 455, 600, true);
+	}
 }

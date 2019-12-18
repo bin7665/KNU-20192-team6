@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -27,9 +28,9 @@ public class fourSize extends JFrame implements ActionListener{
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	private String name;
-	private String side1 = "반찬.";
-	private String side2 = "반찬..";
-	private String side3 = "반찬 or 국";
+	private String side1 = "반찬1";
+	private String side2 = "반찬2";
+	private String side3 = "반찬 / 국";
 	private String riceString = "밥";
 	private lunchbox temp;
 	private JPanel sizePanel;
@@ -38,11 +39,14 @@ public class fourSize extends JFrame implements ActionListener{
 	private JButton sideDish3;
 	private JButton rice;
 	
-	
+	public fourSize() {
+		super();
+	}
 	
 	public fourSize(String user)	
 	{
 		super("메뉴 정하기");
+		setLocation(450,150);
 		name = user;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,31 +54,77 @@ public class fourSize extends JFrame implements ActionListener{
 		sizePanel = new JPanel();
 		sizePanel.setLayout(null);
 		sideDish1 = new JButton(side1);
+		sideDish1.setFont(new Font("", Font.PLAIN, 25));
 		sideDish1.setBounds(200, 50, 285, 200);
 		sideDish1.addActionListener(this);
 		sizePanel.add(sideDish1);
 		sideDish2 = new JButton(side2);
+		sideDish2.setFont(new Font("", Font.PLAIN, 25));
 		sideDish2.setBounds(485, 50, 285, 200);
 		sideDish2.addActionListener(this);
 		sizePanel.add(sideDish2);
 		rice = new JButton(riceString);
+		rice.setFont(new Font("", Font.PLAIN, 25));
 		rice.setBounds(200, 250, 325, 200);
 		rice.addActionListener(this);
 		sizePanel.add(rice);
 		sideDish3 = new JButton(side3);
+		sideDish3.setFont(new Font("", Font.PLAIN, 25));
 		sideDish3.setBounds(525, 250, 245, 200);
 		sideDish3.addActionListener(this);
 		sizePanel.add(sideDish3);
 		JButton order = new JButton("주문하기");
+		order.setFont(new Font("", Font.PLAIN, 25));
 		order.setBounds(285, 500, 400, 90);
 		order.addActionListener(this);
 		sizePanel.add(order);
 		menu gui = new menu(this.getWidth(), this.getHeight(), this, name);
 	    sizePanel.add(gui);
 		add(sizePanel, BorderLayout.CENTER);
-	
 	}
 
+	public fourSize(String user, String s1, String s2, String s3, String s4) {
+		super("메뉴 정하기");
+		side1 = s1;
+		side2 = s2;
+		riceString = s3;
+		side3 = s4;
+		setLocation(450,150);
+		name = user;
+		setSize(WIDTH, HEIGHT);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLayout(new BorderLayout());
+		sizePanel = new JPanel();
+		sizePanel.setLayout(null);
+		sideDish1 = new JButton(side1);
+		sideDish1.setFont(new Font("", Font.PLAIN, 25));
+		sideDish1.setBounds(200, 50, 285, 200);
+		sideDish1.addActionListener(this);
+		sizePanel.add(sideDish1);
+		sideDish2 = new JButton(side2);
+		sideDish2.setFont(new Font("", Font.PLAIN, 25));
+		sideDish2.setBounds(485, 50, 285, 200);
+		sideDish2.addActionListener(this);
+		sizePanel.add(sideDish2);
+		rice = new JButton(riceString);
+		rice.setFont(new Font("", Font.PLAIN, 25));
+		rice.setBounds(200, 250, 325, 200);
+		rice.addActionListener(this);
+		sizePanel.add(rice);
+		sideDish3 = new JButton(side3);
+		sideDish3.setFont(new Font("", Font.PLAIN, 25));
+		sideDish3.setBounds(525, 250, 245, 200);
+		sideDish3.addActionListener(this);
+		sizePanel.add(sideDish3);
+		JButton order = new JButton("주문하기");
+		order.setFont(new Font("", Font.PLAIN, 25));
+		order.setBounds(285, 500, 400, 90);
+		order.addActionListener(this);
+		sizePanel.add(order);
+		menu gui = new menu(this.getWidth(), this.getHeight(), this, name);
+	    sizePanel.add(gui);
+		add(sizePanel, BorderLayout.CENTER);
+	}
 	
 	
 	public void actionPerformed(ActionEvent e) {

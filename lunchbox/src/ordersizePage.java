@@ -27,6 +27,7 @@ public class ordersizePage extends JFrame implements ActionListener {
 	public ordersizePage(String user)
 	{
 		super("도시락 크기 선정");
+		setLocation(450,150);
 		name = user;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

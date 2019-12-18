@@ -29,16 +29,17 @@ public class menu extends JPanel implements ActionListener {
 		cur = page;
 		userid = ID;
 		button_size = width/4;
-		setLocation(0, height-120);
+		setLocation(0, height-140);
 		setSize(width,128);
 		setLayout(null);
 
 		JButton backButton = new JButton("Back");
-        backButton.setBounds(0, 0, button_size, 80);
+        backButton.setBounds(0, 0, button_size, 100);
+        backButton.setBackground(Color.WHITE);
         //plus image
         ImageIcon Icon1 = new ImageIcon("src/backbutton.png");
         Image img1 = Icon1.getImage();
-		Image newimg1 = img1.getScaledInstance(button_size, 80, java.awt.Image.SCALE_SMOOTH);
+		Image newimg1 = img1.getScaledInstance(button_size, 100, java.awt.Image.SCALE_SMOOTH);
 		Icon1 = new ImageIcon(newimg1);
 		backButton.setIcon(Icon1);
 		//end plus image		
@@ -46,11 +47,12 @@ public class menu extends JPanel implements ActionListener {
         this.add(backButton);
         
         JButton basketButton = new JButton("Basket");
-        basketButton.setBounds(button_size, 0, button_size, 80);
+        basketButton.setBounds(button_size, 0, button_size, 100);
+        basketButton.setBackground(Color.WHITE);
         //plus image
         ImageIcon Icon2 = new ImageIcon("src/basketbutton.png");
         Image img2 = Icon2.getImage();
-		Image newimg2 = img2.getScaledInstance(button_size, 80, java.awt.Image.SCALE_SMOOTH);
+		Image newimg2 = img2.getScaledInstance(button_size, 100, java.awt.Image.SCALE_SMOOTH);
 		Icon2 = new ImageIcon(newimg2);
 		basketButton.setIcon(Icon2);
 		//end plus image
@@ -58,11 +60,12 @@ public class menu extends JPanel implements ActionListener {
         this.add(basketButton);
         
         JButton orderButton = new JButton("Purchase");
-        orderButton.setBounds(button_size*2, 0, button_size, 80);
+        orderButton.setBounds(button_size*2, 0, button_size, 100);
+        orderButton.setBackground(Color.WHITE);
         //plus image
         ImageIcon Icon3 = new ImageIcon("src/purchasebutton.png");
         Image img3 = Icon3.getImage();
-		Image newimg3 = img3.getScaledInstance(button_size-20, 80, java.awt.Image.SCALE_SMOOTH);
+		Image newimg3 = img3.getScaledInstance(button_size-20, 100, java.awt.Image.SCALE_SMOOTH);
 		Icon3 = new ImageIcon(newimg3);
 		orderButton.setIcon(Icon3);
 		//end plus image
@@ -70,11 +73,12 @@ public class menu extends JPanel implements ActionListener {
         this.add(orderButton);
         
         JButton infoButton = new JButton("Information");
-        infoButton.setBounds(button_size*3, 0, button_size, 80);
+        infoButton.setBounds(button_size*3, 0, button_size, 100);
+        infoButton.setBackground(Color.WHITE);
         //plus image
         ImageIcon Icon4 = new ImageIcon("src/informationbutton.png");
         Image img4 = Icon4.getImage();
-		Image newimg4 = img4.getScaledInstance(button_size, 80, java.awt.Image.SCALE_SMOOTH);
+		Image newimg4 = img4.getScaledInstance(button_size, 100, java.awt.Image.SCALE_SMOOTH);
 		Icon4 = new ImageIcon(newimg4);
 		infoButton.setIcon(Icon4);
 		//end plus image
@@ -107,6 +111,9 @@ public class menu extends JPanel implements ActionListener {
 		else if(buttonString.equals("Information"))
 		{
 			//정보 페이지
+			infoPage gui = new infoPage(userid);
+			gui.setVisible(true);
+			gui.setLocationRelativeTo(null);
 		}
 	}
 }

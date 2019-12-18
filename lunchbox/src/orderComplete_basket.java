@@ -25,13 +25,10 @@ public class orderComplete_basket extends JFrame implements ActionListener {
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	
-	public void actionPerformed(ActionEvent e) {
-		
-	}
-	
 	public orderComplete_basket(String user, int kind)
 	{
 		super("장바구니에 담기 완료");
+		setLocation(450,150);
 		name = user;
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,6 +47,19 @@ public class orderComplete_basket extends JFrame implements ActionListener {
 		orderList.addActionListener(this);
 		menuPanel.add(orderList);
         add(menuPanel, BorderLayout.CENTER);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		String buttonString = e.getActionCommand();
+		if(buttonString.equals("배달 정보 보기")){
+			
+		}
+		else if(buttonString.equals("장바구니 창 가기")){
+			dispose();
+			Basket gui = new Basket(name);
+			gui.setVisible(true);
+			gui.setLocationRelativeTo(null);
+		}
 	}
 }
 

@@ -19,6 +19,7 @@ public class orderList_6 extends JFrame implements ActionListener {
 	public orderList_6(int pos, sixSize data)
 	{
 		super("메뉴 리스트");
+		setLocation(450,150);
 		gui = data;
 		position = pos;
 		setSize(WIDTH, HEIGHT);
